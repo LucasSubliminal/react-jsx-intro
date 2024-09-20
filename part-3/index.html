@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Simple styling for the Person component */
+    .person {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      max-width: 400px;
+    }
+
+    .person-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .person-hobbies {
+      list-style-type: square;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Part 3</h1>
+
+<div id="root"> <!-- React components will be rendered here --> </div>
+
+<!-- React and ReactDOM libraries -->
+<script src="https://unpkg.com/react/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+
+<!-- Babel to compile JSX -->
+<script src="https://unpkg.com/babel-standalone"></script>
+
+<!-- JSX Script for your React components -->
+<script type="text/babel">
+
+  // Person component
+  function Person({ name, age, hobbies }) {
+    // Truncate name if it's longer than 8 characters
+    const displayName = name.length > 8 ? name.slice(0, 6) + "..." : name;
+
+    return (
+      <div className="person">
+        <p className="person-header">Learn some information about this person:</p>
+        <p>Name: {displayName}</p>
+        <p>Age: {age}</p>
+        
+        {age >= 18 ? <h3>Please go vote!</h3> : <h3>You must be 18 to vote.</h3>}
+
+        <h4>Hobbies:</h4>
+        <ul className="person-hobbies">
+          {hobbies.map((hobby, index) => (
+            <li key={index}>{hobby}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+
+  // App component renders three Person components
+  function App() {
+    return (
+      <div>
+        <Person
+          name="Alexander"
+          age={25}
+          hobbies={["Reading", "Traveling", "Photography"]}
+        />
+        <Person
+          name="Chris"
+          age={17}
+          hobbies={["Gaming", "Drawing", "Coding"]}
+        />
+        <Person
+          name="Rebecca"
+          age={30}
+          hobbies={["Cooking", "Hiking", "Yoga"]}
+        />
+      </div>
+    );
+  }
+
+  // Render the App component into the root div
+  ReactDOM.render(<App />, document.getElementById('root'));
+
+</script>
+
+</body>
+</html>

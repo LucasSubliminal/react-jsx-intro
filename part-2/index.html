@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* CSS styles for the Tweet component */
+    .tweet {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      max-width: 400px;
+      background-color: #f9f9f9;
+    }
+    .tweet-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .tweet-date {
+      color: #777;
+      font-size: 0.9em;
+    }
+    .tweet-message {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Part 2</h1>
+
+<div id="root"> <!-- React components will be rendered here --> </div>
+
+<!-- React and ReactDOM libraries -->
+<script src="https://unpkg.com/react/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+
+<!-- Babel to compile JSX -->
+<script src="https://unpkg.com/babel-standalone"></script>
+
+<!-- JSX Script for your React components -->
+<script type="text/babel">
+
+  // Tweet component
+  function Tweet({ username, name, date, message }) {
+    return (
+      <div className="tweet">
+        <div className="tweet-header">
+          {name} (@{username})
+        </div>
+        <div className="tweet-date">
+          {date}
+        </div>
+        <div className="tweet-message">
+          {message}
+        </div>
+      </div>
+    );
+  }
+
+  // App component renders three Tweet components
+  function App() {
+    return (
+      <div>
+        <Tweet
+          username="john_doe"
+          name="John Doe"
+          date="September 15, 2024"
+          message="This is my first tweet! So excited to be here."
+        />
+        <Tweet
+          username="jane_smith"
+          name="Jane Smith"
+          date="September 16, 2024"
+          message="Loving this platform. Looking forward to tweeting more!"
+        />
+        <Tweet
+          username="mike_jones"
+          name="Mike Jones"
+          date="September 17, 2024"
+          message="Just finished a new project. Feeling proud!"
+        />
+      </div>
+    );
+  }
+
+  // Render the App component to the root div
+  ReactDOM.render(<App />, document.getElementById('root'));
+
+</script>
+
+</body>
+</html>

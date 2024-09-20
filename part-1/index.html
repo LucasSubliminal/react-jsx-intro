@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>React Assignment</title>
+</head>
+<body>
+
+<h1>Part 1</h1>
+
+<div id="root"> <!-- React components will be rendered here --> </div>
+
+<!-- React and ReactDOM libraries -->
+<script src="https://unpkg.com/react/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+
+<!-- Babel to compile JSX -->
+<script src="https://unpkg.com/babel-standalone"></script>
+
+<!-- JSX Script for your React components -->
+<script type="text/babel">
+
+  // FirstComponent renders an h1 with a message
+  function FirstComponent() {
+    return <h1>My very first component</h1>;
+  }
+
+  // NamedComponent renders a paragraph that accepts a "name" prop
+  function NamedComponent(props) {
+    return <p>My name is {props.name}</p>;
+  }
+
+  // App component renders the other two components
+  function App() {
+    return (
+      <div>
+        <FirstComponent />
+        <NamedComponent name="John Doe" />
+      </div>
+    );
+  }
+
+  // Render the App component into the #root div
+  ReactDOM.render(<App />, document.getElementById('root'));
+
+</script>
+
+</body>
+</html>
